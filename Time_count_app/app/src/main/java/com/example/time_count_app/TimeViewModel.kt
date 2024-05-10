@@ -69,6 +69,17 @@ class TimeViewModel : ViewModel() {
         _timeCount = 1
         timeCount.value = _timeCount
     }
+    fun removeList(index: Int){
+       val removeData = _timeList.removeAt(index)
+        if (removeData.no !=  _timeCount){
+            for (i in index until _timeList.size){
+                _timeList[i].no = _timeList[i].no -1
+            }
+        }
+        _timeCount  -= 1
+        timeCount.value = _timeCount
+        timeList.value = _timeList
+    }
 }
 
-data class TimeData(val no: Int, val time: Int)
+data class TimeData(var no: Int, val time: Int)
